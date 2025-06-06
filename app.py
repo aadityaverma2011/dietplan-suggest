@@ -54,7 +54,6 @@ st.markdown("""
 
 st.markdown("<h1>Visual Diet Coach</h1>", unsafe_allow_html=True)
 st.markdown("<div class='sub'>Upload a food photo and get nutrition advice directly from Gemini 1.5 Flash </div>", unsafe_allow_html=True)
-badge(type="github", name="https://github.com/aadityaverma2011/dietplan-suggest", url="https://github.com/aadityaverma2011")
 
 # ---------------------- FILE UPLOAD ----------------------
 
