@@ -43,7 +43,7 @@ def call_gemini_with_image(image_data_b64, prompt_text):
 
 # ---------------------- MODERN UI ----------------------
 
-st.set_page_config(page_title="Visual Diet Coach", layout="centered", page_icon="🥗")
+st.set_page_config(page_title="Visual Diet Coach", layout="centered", page_icon="")
 
 st.markdown("""
     <style>
@@ -94,19 +94,19 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("<h1>Visual Diet Coach</h1>", unsafe_allow_html=True)
-st.markdown("<div class='sub'>Upload a food photo and get structured nutrition advice from Gemini 1.5 Flash 💡</div>", unsafe_allow_html=True)
-
+st.markdown("<div class='sub'>Upload a food photo and get structured nutrition advice from Gemini 1.5 Flash</div>", unsafe_allow_html=True)
+badge(type="github", name="aadityaverma2011/VisualDietCoach", url="https://github.com/aadityaverma2011")
 
 # ---------------------- FILE UPLOAD ----------------------
 
-uploaded_file = st.file_uploader("📤 Upload your meal photo", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Upload your meal photo", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
     image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption="🍽️ Your Meal", use_container_width=True, output_format="PNG")
+    st.image(image, caption="Your Meal", use_container_width=True, output_format="PNG")
 
-    if st.button("🧠 Get Nutrition Advice"):
-        with st.spinner("🔍 Gemini is analyzing your food photo..."):
+    if st.button("Get Nutrition Advice"):
+        with st.spinner("Analyzing your food photo..."):
             b64_image = image_to_base64(image)
             prompt = (
                 "You are a nutrition expert. Analyze this food image and provide a response in the following exact structure:\n\n"
@@ -119,8 +119,8 @@ if uploaded_file:
             result = call_gemini_with_image(b64_image, prompt)
 
         with stylable_container("response", css_styles="output-box"):
-            st.markdown(f"### 🧾 Gemini's Take:\n{result}")
+            st.markdown(f"### Gemini's Take:\n{result}")
 else:
-    st.info("Upload a food image to get started!")
+    st.info("Upload a food image to get started.")
 
-
+st.markdown("---")
