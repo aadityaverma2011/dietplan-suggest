@@ -109,12 +109,15 @@ if uploaded_file:
         with st.spinner("Analyzing your food photo..."):
             b64_image = image_to_base64(image)
             prompt = (
-                "You are a nutrition expert. Analyze this food image and provide a response in the following exact structure:\n\n"
-                "1. **Identified Food Item:** (What food is shown?)\n"
-                "2. **Estimated Calories:** (Approximate number of calories)\n"
-                "3. **Health Assessment:** (Is it healthy or not? Why?)\n"
-                "4. **Suggested Healthier Alternative:** (Recommend 1 better option, or say 'None needed')\n\n"
-                "Keep it concise, informative, and user-friendly. Follow this format strictly."
+            "You are a certified nutritionist. Analyze this food image and return a concise, structured response in the following exact format, estimate the portion sizes from the image and answer no matter how impossible it looks give an estimate and mark (estimateed) in the bracket:\n\n"
+            "1. **Food Item:**\n"
+            "2. **Calories (est.):**\n"
+            "3. **Nutrition Note:**\n"
+            "4. **MACROS breakdown in numbers:**\n"
+            "5. **Alternative (if needed):**\n"
+            "6. **Health Score (1-5):**\n\n"
+            "Be concise, avoid casual language, and use an expert tone. Max 70 words total."
+
             )
             result = call_gemini_with_image(b64_image, prompt)
 
